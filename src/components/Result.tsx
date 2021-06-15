@@ -6,7 +6,7 @@ import { MapToUnion } from '../shared/UtilityTypes';
 type ResultProps = {
   result: ResultState | undefined;
 };
-// Prepare data acquisition
+
 const prepareDataAcq = (props: ResultState) => {
   return (key: keyof ResultState): MapToUnion<ResultState> =>
     props ? props[key] : '';
@@ -20,7 +20,7 @@ const Result: React.FC<ResultProps> = (props) => {
 
   const getValue = prepareDataAcq(result);
   return (
-    <Card style={{ width: '18rem' }}>
+    <Card style={{ width: '18rem', marginTop: '1rem' }}>
       <ListGroup variant="flush">
         <ListGroupItem>{getValue('name')}</ListGroupItem>
         <ListGroupItem>{getValue('country')}</ListGroupItem>

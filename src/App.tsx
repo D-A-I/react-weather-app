@@ -3,6 +3,7 @@ import Title from './components/Title';
 import Form from './components/Form';
 import Result from './components/Result';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 
 // APIから返却される型
 export type ResultType = {

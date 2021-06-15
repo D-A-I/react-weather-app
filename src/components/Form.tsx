@@ -12,13 +12,12 @@ const Form: React.FC<FormProps> = ({ setCity, getWeather }) => {
       <FormGroup>
         <FormControl
           type="text"
-          className=""
           placeholder="都市名"
           onChange={(e) => setCity(e.target.value)}
         />
       </FormGroup>
       <FormGroup>
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" style={{ marginTop: '1rem' }}>
           Get Weather
         </Button>
       </FormGroup>
