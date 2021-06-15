@@ -1,12 +1,13 @@
 import React from 'react';
+import { Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 import { ResultState } from '../App';
 import { MapToUnion } from '../shared/UtilityTypes';
 
 type ResultProps = {
   result: ResultState | undefined;
 };
-
-const existsProperty = (props: ResultState) => {
+// Prepare data acquisition
+const prepareDataAcq = (props: ResultState) => {
   return (key: keyof ResultState): MapToUnion<ResultState> =>
     props ? props[key] : '';
 };
@@ -17,19 +18,21 @@ const Result: React.FC<ResultProps> = (props) => {
   // result が空の場合
   if (!result) return <div />;
 
-  const getValue = existsProperty(result);
+  const getValue = prepareDataAcq(result);
   return (
-    <div>
-      <div>{getValue('name')}</div>
-      <div>{getValue('country')}</div>
-      <div>
-        {getValue('temp_c')} <span>℃</span>
-      </div>
-      <div>
-        <img src={getValue('icon')} alt="icon" />
-        <span>{getValue('text')}</span>
-      </div>
-    </div>
+    <Card style={{ width: '18rem' }}>
+      <ListGroup variant="flush">
+        <ListGroupItem>{getValue('name')}</ListGroupItem>
+        <ListGroupItem>{getValue('country')}</ListGroupItem>
+        <ListGroupItem>
+          {getValue('temp_c')} <span>℃</span>
+        </ListGroupItem>
+        <ListGroupItem>
+          <img src={getValue('icon')} alt="icon" />
+          <span>{getValue('text')}</span>
+        </ListGroupItem>
+      </ListGroup>
+    </Card>
   );
 };
 

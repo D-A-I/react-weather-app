@@ -1,4 +1,5 @@
-import React, { FormEvent } from 'react';
+import React from 'react';
+import { FormGroup, FormControl, Button } from 'react-bootstrap';
 
 type FormProps = {
   setCity: React.Dispatch<React.SetStateAction<string>>;
@@ -8,13 +9,19 @@ type FormProps = {
 const Form: React.FC<FormProps> = ({ setCity, getWeather }) => {
   return (
     <form onSubmit={(e) => getWeather(e)}>
-      <input
-        type="text"
-        name="city"
-        placeholder="都市名"
-        onChange={(e) => setCity(e.target.value)}
-      />
-      <button type="submit">Get Weather</button>
+      <FormGroup>
+        <FormControl
+          type="text"
+          className=""
+          placeholder="都市名"
+          onChange={(e) => setCity(e.target.value)}
+        />
+      </FormGroup>
+      <FormGroup>
+        <Button variant="primary" type="submit">
+          Get Weather
+        </Button>
+      </FormGroup>
     </form>
   );
 };
