@@ -1,0 +1,29 @@
+{
+  "name": "react-weather-app",
+  "build": {
+    "context": "..",
+    "dockerfile": "Dockerfile",
+    "args": {
+      "VARIANT": "15.13-buster-slim"
+    }
+  },
+  "settings": {
+    "terminal.integrated.defaultProfile.linux": "bash (login)",
+    "terminal.integrated.profiles.linux": {
+      "bash (login)": {
+        "path": "bash",
+        "args": [
+          "-l"
+        ]
+      }
+    }
+  },
+  "extensions": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "joelday.docthis",
+  ],
+  "postCreateCommand": "yarn install", // コンテナイメージのビルド後にsetup
+  // "forwardPorts": [],
+  // "remoteUser": "node"
+}

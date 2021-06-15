@@ -1,0 +1,15 @@
+{
+  "weather": {
+    "current": {
+      "condition": {
+        "icon": "//cdn.weatherapi.com/weather/64x64/night/113.png",
+        "text": "Clear",
+        "temp_c": 13
+      }
+    },
+    "location": {
+      "country": "UK",
+      "name": "London"
+    }
+  }
+}
