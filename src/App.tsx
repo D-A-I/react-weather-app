@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Title from './components/Title';
 import Form from './components/Form';
 import Result from './components/Result';
+import Loading from './components/Loading';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
@@ -29,8 +30,10 @@ function App(): JSX.Element {
   // eslint-disable-next-line
   const [city, setCity] = useState<string>('');
   const [result, setResult] = useState<ResultState>();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const getWeather = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsLoading(true);
     const data: ResultType = await fetch('http://localhost:3000/weather')
       .then((x) => x.json())
       .then((x) => x)
@@ -46,12 +49,15 @@ function App(): JSX.Element {
       text: data.current.condition.text,
       icon: data.current.condition.icon,
     });
+    setCity('');
+    setIsLoading(false);
   };
 
   return (
     <div className="App">
       <Title />
-      <Form setCity={setCity} getWeather={getWeather} />
+      <Form city={city} setCity={setCity} getWeather={getWeather} />
+      <Loading isLoading={isLoading} />
       <Result result={result} />
     </div>
   );
