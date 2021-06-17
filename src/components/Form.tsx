@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormGroup, FormControl, Button } from 'react-bootstrap';
+import { Button, Col, Row, Form } from 'react-bootstrap';
 
 type FormProps = {
   city: string;
@@ -7,24 +7,25 @@ type FormProps = {
   getWeather: (e: React.FormEvent) => void;
 };
 
-const Form: React.FC<FormProps> = ({ city, setCity, getWeather }) => {
+const WeatherForm: React.FC<FormProps> = ({ city, setCity, getWeather }) => {
   return (
-    <form onSubmit={(e) => getWeather(e)}>
-      <FormGroup>
-        <FormControl
-          type="text"
-          placeholder="都市名"
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-        />
-      </FormGroup>
-      <FormGroup>
-        <Button variant="primary" type="submit" style={{ marginTop: '1rem' }}>
-          Get Weather
-        </Button>
-      </FormGroup>
-    </form>
+    <Form onSubmit={(e) => getWeather(e)}>
+      <Form.Group as={Row}>
+        <Col sm="10">
+          <Form.Control
+            placeholder="都市名"
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+          />
+        </Col>
+        <Col sm="2">
+          <Button variant="primary" type="submit">
+            Get Weather
+          </Button>
+        </Col>
+      </Form.Group>
+    </Form>
   );
 };
 
-export default Form;
+export default WeatherForm;
